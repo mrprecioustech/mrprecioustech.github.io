@@ -47,6 +47,7 @@ bundle exec jekyll serve --drafts
 │   ├── css/style.css    # The entire theme (custom properties for theming)
 │   ├── css/admin.css    # Admin panel styles (sidebar, tables, forms)
 │   ├── js/main.js       # Theme toggle, search, TOC, progress… (vanilla JS)
+│   ├── js/interview-prep.js # PrepLab question bank, mocks, STAR builder, AI coach
 │   ├── js/admin.js      # Admin app (dashboard, CRUD, preview, localStorage)
 │   └── images/          # favicon.svg, avatar.svg
 ├── admin/               # Static CMS — /admin/ (login gate + dashboard)
