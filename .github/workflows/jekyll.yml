@@ -11,7 +11,6 @@ permissions:
   contents: read
   pages: write
   id-token: write
-  pull-requests: write # post build failure logs on PRs for debugging
 
 concurrency:
   group: pages
@@ -33,29 +32,9 @@ jobs:
           bundler-cache: true
 
       - name: Build with Jekyll
-        run: |
-          set -o pipefail
-          bundle exec jekyll build --trace --verbose 2>&1 | tee build.log
+        run: bundle exec jekyll build --trace
         env:
           JEKYLL_ENV: production
-
-      # TEMPORARY debug aid: surface the build log on the PR until green.
-      - name: Report build failure
-        if: failure() && github.event_name == 'pull_request'
-        run: |
-          {
-            echo "## Jekyll build failed"
-            echo '```'
-            grep -iE "error|exception|invalid|Traceback|raise |warning" build.log | tail -40
-            echo '```'
-            echo "### Tail of build.log"
-            echo '```'
-            tail -25 build.log
-            echo '```'
-          } > report.md
-          gh pr comment "${{ github.event.pull_request.number }}" --body-file report.md
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # Builds the deployable Pages artifact. Runs on main (and manual runs),
   # skipped on PRs. Requires Pages to be enabled once in repo settings:
