@@ -1,0 +1,9 @@
+<div class="share">
+  <span class="share-label">Share this post</span>
+  <div class="share-buttons">
+    <a class="share-btn" href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&amp;url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" aria-label="Share on X">X</a>
+    <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn">in</a>
+    <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" aria-label="Share on Facebook">f</a>
+    <button class="share-btn" type="button" data-copy-link data-url="{{ page.url | absolute_url }}" aria-label="Copy link to this post">Copy link</button>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="author-box">
+  <img class="author-avatar" src="{{ site.author.avatar | relative_url }}" alt="Avatar of {{ site.author.name }}" width="64" height="64" loading="lazy">
+  <div class="author-info">
+    <p class="author-label">Written by</p>
+    <p class="author-name">{{ site.author.name }}</p>
+    <p class="author-bio">{{ site.author.bio }}</p>
+    <p class="author-links">
+      <a href="{{ '/about/' | relative_url }}">More about me &rarr;</a>
+      <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </div>
+</div>

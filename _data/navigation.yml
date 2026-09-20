@@ -1,0 +1,12 @@
+# Primary navigation (header + footer). `url` is matched against page.url
+# for the active state, so keep the trailing slashes.
+- title: Home
+  url: /
+- title: About
+  url: /about/
+- title: Projects
+  url: /projects/
+- title: Archive
+  url: /archive/
+- title: Tags
+  url: /tags/

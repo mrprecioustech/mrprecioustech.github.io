@@ -1,0 +1,36 @@
+# ----------------------------------------------------------------------
+# SAMPLE PROJECTS — replace these with your own real projects.
+# Each project: name, tagline, language, tags, github (url or empty),
+# demo (url or empty), featured (true/false).
+# ----------------------------------------------------------------------
+- name: terminal-portfolio
+  tagline: A portfolio website that looks and feels like a real terminal — with easter eggs.
+  language: JavaScript
+  tags: [web, javascript, fun]
+  github: ""
+  demo: ""
+  featured: true
+
+- name: py-budget-buddy
+  tagline: A tiny CLI that turns messy bank CSV exports into a clean monthly budget report.
+  language: Python
+  tags: [python, cli, automation]
+  github: ""
+  demo: ""
+  featured: true
+
+- name: css-only-components
+  tagline: A collection of UI components (modals, tabs, toggles) built with zero JavaScript.
+  language: CSS
+  tags: [css, webdev, tutorial]
+  github: ""
+  demo: ""
+  featured: false
+
+- name: dev-links
+  tagline: A curated, searchable list of free resources I actually use to learn and build.
+  language: Markdown
+  tags: [resources, productivity]
+  github: ""
+  demo: ""
+  featured: false

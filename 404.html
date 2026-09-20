@@ -1,0 +1,29 @@
+---
+layout: default
+title: Page not found
+description: This page doesn't exist — but plenty of good ones do.
+permalink: /404.html
+---
+
+<section class="not-found">
+  <div class="container">
+    <p class="not-found-code gradient-text">404</p>
+    <h1>Lost in the codebase?</h1>
+    <p>The page you're looking for moved, never existed, or is hiding behind a bad deploy.</p>
+    <div class="not-found-links">
+      <a class="btn btn-primary" href="{{ '/' | relative_url }}">Back to home</a>
+      <a class="btn btn-outline" href="{{ '/search/' | relative_url }}">Search posts</a>
+    </div>
+    <div class="not-found-posts">
+      <h2>Popular posts</h2>
+      <ul class="archive-list">
+        {% for post in site.posts limit: 4 %}
+        <li>
+          <span class="archive-date">{{ post.date | date: "%b %-d" }}</span>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
