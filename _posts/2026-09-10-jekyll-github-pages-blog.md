@@ -108,7 +108,7 @@ The {% raw %}`{{ site.title }}`{% endraw %} style double-curly syntax you see in
 ```
 {% endraw %}
 
-> Inside your own posts, wrap any Liquid-looking code in raw tags ({{ "{%" }} raw {{ "%}" }} … {{ "{%" }} endraw {{ "%}" }}), otherwise Jekyll will try to render it. Ask me how I know.
+> Inside your own posts, wrap any Liquid-looking code in raw tags (`{&#37; raw &#37;}` … `{&#37; endraw &#37;}`), otherwise Jekyll will try to render it. Ask me how I know.
 {: .callout}
 
 ## Step 5: Preview locally
