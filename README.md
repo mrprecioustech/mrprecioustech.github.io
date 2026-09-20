@@ -13,7 +13,6 @@ A personal tech blog built with [Jekyll](https://jekyllrb.com) and hosted for fr
 - 🏷️ Tags, archive, pagination, related posts, prev/next navigation
 - 📡 RSS feed, sitemap, SEO meta tags (`jekyll-feed`, `jekyll-seo-tag`, `jekyll-sitemap`)
 - 💬 Optional comments via [Giscus](https://giscus.app) (commented out until you enable Discussions)
-- 🛠️ Admin panel at `/admin/` — static CMS (dashboard, post/draft manager, Markdown generator with live preview, no server required)
 - 🚀 CI/CD: GitHub Actions builds on every PR and deploys `main` to Pages
 - 📱 Fully responsive, keyboard accessible, no frameworks or build step for assets
 
@@ -45,11 +44,8 @@ bundle exec jekyll serve --drafts
 ├── _posts/              # Published posts: YEAR-MONTH-DAY-title.md
 ├── assets/
 │   ├── css/style.css    # The entire theme (custom properties for theming)
-│   ├── css/admin.css    # Admin panel styles (sidebar, tables, forms)
 │   ├── js/main.js       # Theme toggle, search, TOC, progress… (vanilla JS)
-│   ├── js/admin.js      # Admin app (dashboard, CRUD, preview, localStorage)
 │   └── images/          # favicon.svg, avatar.svg
-├── admin/               # Static CMS — /admin/ (login gate + dashboard)
 ├── .github/workflows/   # Build + deploy to GitHub Pages
 └── index.html           # Homepage (paginated post feed)
 ```
@@ -107,17 +103,6 @@ A couple of gotchas worth knowing:
 ### Analytics (optional)
 
 The theme ships without tracking. To add privacy-friendly analytics (Plausible, Umami…), paste the provider's snippet at the end of `_includes/head.html`.
-
-## Admin panel
-
-A fully static, zero-backend CMS lives at `/admin/` (not linked in navigation — visit directly).
-
-- **Access:** open `/admin/`, password is `admin` (client-side demo gate — GitHub Pages has no server). For production, protect with Cloudflare Access or set `exclude: [admin]` in `_config.yml` to keep it out of the build.
-- **Features:** dashboard stats + recent posts/activity, searchable post table (from `search.json`), drafts in `localStorage`, new-post generator (front-matter form → live preview via `marked.js` → downloadable `_posts/YYYY-MM-DD-slug.md`), media placeholder, settings/export.
-- **Workflow:** *Save draft* (browser only) → *Download .md* → move to `_posts/` → `git commit` + push to `main` → Pages deploy.
-- **Stack:** vanilla JS, no dependencies except CDN `marked` for preview, reuses site design tokens.
-
-Try it locally: `bundle exec jekyll serve --drafts` → http://localhost:4000/admin/ (password `admin`).
 
 ## Deployment
 
