@@ -1,0 +1,105 @@
+# ======================================================================
+# MrPreciousTech — personal tech blog
+# https://github.com/mrprecioustech/mrprecioustech.github.io
+# Built with Jekyll 4 + GitHub Pages
+# ======================================================================
+
+title: MrPreciousTech
+tagline: Notes on code, tools & building for the web
+description: >-
+  MrPreciousTech is a personal tech blog by Mr Precious — practical tutorials,
+  deep dives and field notes on JavaScript, Python, web development and the
+  tools developers love.
+url: https://mrprecioustech.github.io
+baseurl: ""
+
+# ----------------------------------------------------------------------
+# Author (used for bylines, author box, SEO and feed)
+# ----------------------------------------------------------------------
+author:
+  name: Mr Precious
+  username: mrprecioustech
+  role: Software Developer & Tech Blogger
+  bio: >-
+    I break things, fix things, and write down what I learn — mostly about
+    JavaScript, Python and the modern web.
+  avatar: /assets/images/avatar.svg
+  github: mrprecioustech
+
+logo: /assets/images/avatar.svg
+
+# ----------------------------------------------------------------------
+# Build settings
+# ----------------------------------------------------------------------
+permalink: pretty
+timezone: UTC
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+
+# Homepage pagination (jekyll-paginate only paginates index.html)
+paginate: 5
+paginate_path: /page:num/
+
+feed:
+  path: feed.xml
+  posts_limit: 20
+
+# ----------------------------------------------------------------------
+# Comments via Giscus (https://giscus.app).
+# 1. Enable Discussions on this repo (Settings > General > Discussions)
+# 2. Install the Giscus app, pick the "Comments" category
+# 3. Uncomment + fill in the values below — comments appear automatically
+# ----------------------------------------------------------------------
+# giscus:
+#   repo: mrprecioustech/mrprecioustech.github.io
+#   repo_id: YOUR_REPO_ID
+#   category: Comments
+#   category_id: YOUR_CATEGORY_ID
+#   mapping: pathname
+#   reactions_enabled: 1
+#   theme: preferred_color_scheme
+
+# ----------------------------------------------------------------------
+# Defaults
+# ----------------------------------------------------------------------
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      toc: true
+      comments: true
+      accent: indigo
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+  - node_modules/
+  - vendor/
+  - .bundle/

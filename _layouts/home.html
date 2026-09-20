@@ -1,0 +1,162 @@
+---
+layout: default
+---
+{% assign posts_list = paginator.posts | default: site.posts %}
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span> Personal tech blog</p>
+      <h1 class="hero-title">Hi, I'm <span class="gradient-text">{{ site.author.name }}</span>. I&nbsp;write about code.</h1>
+      <p class="hero-tagline">{{ site.tagline }} — practical tutorials, deep dives and field notes. No fluff, just things that work.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#latest">Read the blog</a>
+        <a class="btn btn-outline" href="{{ '/about/' | relative_url }}">About me</a>
+      </div>
+      <dl class="hero-stats">
+        <div>
+          <dt>Articles</dt>
+          <dd>{{ site.posts.size }}</dd>
+        </div>
+        <div>
+          <dt>Topics</dt>
+          <dd>{{ site.tags.size }}</dd>
+        </div>
+        <div>
+          <dt>Reading time</dt>
+          {% assign total_words = 0 %}
+          {% for p in site.posts %}
+            {% assign w = p.content | number_of_words %}
+            {% assign total_words = total_words | plus: w %}
+          {% endfor %}
+          <dd>{{ total_words | divided_by: 180 }}+ min</dd>
+        </div>
+      </dl>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+          <span class="term-title">precious@blog ~</span>
+        </div>
+        <div class="terminal-body">
+          <p><span class="term-prompt">$</span> whoami</p>
+          <p class="term-out">mrprecioustech — developer &amp; writer</p>
+          <p><span class="term-prompt">$</span> cat interests.txt</p>
+          <p class="term-out">javascript · python · web · tools</p>
+          <p><span class="term-prompt">$</span> bundle exec jekyll serve</p>
+          <p class="term-out">Server running… happy writing ✍</p>
+          <p><span class="term-prompt">$</span> <span class="term-cursor"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% assign featured = site.posts | where: "featured", true | first %}
+{% if featured %}
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Featured</p>
+        <h2>Start here</h2>
+      </div>
+    </div>
+    <article class="featured-card">
+      <a class="featured-cover cover-{{ featured.accent | default: 'indigo' }}" href="{{ featured.url | relative_url }}" aria-hidden="true" tabindex="-1">
+        <span class="cover-glyph">&lt;/&gt;</span>
+      </a>
+      <div class="featured-body">
+        <div class="post-card-tags">
+          {% for tag in featured.tags limit: 3 %}
+          {% assign tag_slug = tag | slugify %}
+          <a href="{{ '/tags/#' | append: tag_slug | relative_url }}">#{{ tag }}</a>
+          {% endfor %}
+        </div>
+        <h3><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h3>
+        <p>{{ featured.description | default: featured.excerpt | strip_html | truncatewords: 32 }}</p>
+        <div class="post-card-meta">
+          <time datetime="{{ featured.date | date_to_xmlschema }}">{{ featured.date | date: "%b %-d, %Y" }}</time>
+          <span aria-hidden="true">&middot;</span>
+          <span>{% include read-time.html content=featured.content %}</span>
+        </div>
+        <a class="btn btn-primary" href="{{ featured.url | relative_url }}">Read article</a>
+      </div>
+    </article>
+  </div>
+</section>
+{% endif %}
+
+<section class="section" id="latest">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Fresh off the keyboard</p>
+        <h2>Latest articles</h2>
+      </div>
+      <a class="section-link" href="{{ '/archive/' | relative_url }}">View archive &rarr;</a>
+    </div>
+    {% if posts_list.size > 0 %}
+    <div class="cards-grid">
+      {% for post in posts_list %}
+      {% include post-card.html post=post %}
+      {% endfor %}
+    </div>
+    {% include pagination.html %}
+    {% else %}
+    <p>No posts yet — check back soon.</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section topics-section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Browse by topic</p>
+        <h2>What I write about</h2>
+      </div>
+      <a class="section-link" href="{{ '/tags/' | relative_url }}">All topics &rarr;</a>
+    </div>
+    <ul class="tag-cloud">
+      {% assign sorted_tags = site.tags | sort %}
+      {% for tag in sorted_tags %}
+      {% assign tag_slug = tag[0] | slugify %}
+      <li>
+        <a class="tag-pill" href="{{ '/tags/#' | append: tag_slug | relative_url }}">#{{ tag[0] }} <span class="tag-count">{{ tag[1].size }}</span></a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section about-teaser">
+  <div class="container about-teaser-inner">
+    <img class="teaser-avatar" src="{{ site.author.avatar | relative_url }}" alt="Avatar of {{ site.author.name }}" width="96" height="96" loading="lazy">
+    <div>
+      <p class="eyebrow">About the author</p>
+      <h2>{{ site.author.name }} <span class="muted">· {{ site.author.role }}</span></h2>
+      <p>{{ site.author.bio }}</p>
+      <div class="hero-cta">
+        <a class="btn btn-outline" href="{{ '/about/' | relative_url }}">More about me</a>
+        <a class="btn btn-outline" href="{{ '/projects/' | relative_url }}">See projects</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section subscribe-section">
+  <div class="container">
+    <div class="subscribe-card">
+      <div>
+        <h2>Never miss a post</h2>
+        <p>New articles drop every couple of weeks. Grab the RSS feed — no account, no spam, just posts.</p>
+      </div>
+      <div class="subscribe-actions">
+        <a class="btn btn-primary" href="{{ '/feed.xml' | relative_url }}">Subscribe via RSS</a>
+        <a class="btn btn-outline" href="{{ '/archive/' | relative_url }}">Browse archive</a>
+      </div>
+    </div>
+  </div>
+</section>
