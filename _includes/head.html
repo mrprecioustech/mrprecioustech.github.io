@@ -10,6 +10,7 @@
   <link rel="apple-touch-icon" href="{{ '/assets/images/avatar.svg' | relative_url }}">
   <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% if page.interview_prep %}<link rel="stylesheet" href="{{ '/assets/css/interview-prep.css' | relative_url }}">{% endif %}
   <script>
     // Apply the saved theme before CSS paints (prevents a flash of the wrong theme).
     (function () {

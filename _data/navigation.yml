@@ -2,6 +2,8 @@
 # for the active state, so keep the trailing slashes.
 - title: Home
   url: /
+- title: PrepLab
+  url: /interview-prep/
 - title: About
   url: /about/
 - title: Projects
